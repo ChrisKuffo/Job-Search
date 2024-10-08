@@ -2,15 +2,31 @@
 
 ## Directory Structure
 
-```
 ├── frontend/
-│   ├── .next/
-│   ├── app/
-│   │   ├── api/
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── api/
+│   │   │   ├── (auth)/
+│   │   │   │   ├── login/
+│   │   │   │   │   ├── page.tsx
+│   │   │   │   │   └── layout.tsx
+│   │   │   │   ├── register/
+│   │   │   │   │   ├── page.tsx
+│   │   │   │   │   └── layout.tsx
+│   │   │   │   └── layout.tsx
+│   │   │   ├── dashboard/
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── layout.tsx
+│   │   │   ├── jobs/
+│   │   │   │   ├── [id]/
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── layout.tsx
+│   │   │   ├── layout.tsx
+│   │   │   └── page.tsx
 │   │   ├── components/
 │   │   ├── hooks/
 │   │   ├── lib/
-│   │   ├── pages/
 │   │   ├── styles/
 │   │   ├── types/
 │   │   └── utils/
@@ -18,24 +34,53 @@
 │   ├── tests/
 │   ├── .env
 │   ├── .eslintrc.js
-│   ├── next.config.js
+│   ├── next.config.mjs
 │   ├── package.json
-│   ├── tailwind.config.js
+│   ├── tailwind.config.ts
 │   └── tsconfig.json
 │
 ├── backend/
 │   ├── app/
 │   │   ├── api/
 │   │   │   ├── endpoints/
+│   │   │   │   ├── __init__.py
+│   │   │   │   ├── auth.py
+│   │   │   │   ├── jobs.py
+│   │   │   │   ├── resumes.py
+│   │   │   │   └── matches.py
 │   │   │   └── deps.py
 │   │   ├── core/
 │   │   │   ├── config.py
 │   │   │   └── security.py
 │   │   ├── models/
+│   │   │   ├── __init__.py
+│   │   │   ├── job.py
+│   │   │   ├── resume.py
+│   │   │   └── user.py
 │   │   ├── services/
+│   │   │   ├── __init__.py
+│   │   │   ├── job_service.py
+│   │   │   ├── resume_service.py
+│   │   │   └── matching_service.py
 │   │   ├── utils/
+│   │   │   ├── __init__.py
+│   │   │   └── helpers.py
+│   │   ├── scrapers/
+│   │   │   ├── __init__.py
+│   │   │   ├── linkedin_scraper.py
+│   │   │   ├── indeed_scraper.py
+│   │   │   ├── glassdoor_scraper.py
+│   │   │   ├── ziprecruiter_scraper.py
+│   │   │   └── careerbuilder_scraper.py
+│   │   ├── crawl4ai_config/
+│   │   │   ├── __init__.py
+│   │   │   └── extraction_strategies.py
 │   │   └── main.py
 │   ├── tests/
+│   │   ├── __init__.py
+│   │   ├── test_api/
+│   │   ├── test_services/
+│   │   └── test_scrapers/
 │   ├── .env
 │   ├── pyproject.toml
 │   └── requirements.txt
@@ -63,19 +108,27 @@
 ├── docker-compose.yml
 ├── README.md
 └── package.json
-```
 
 ## Directory and File Descriptions
 
-### Frontend
+### Frontend (Next.js 18)
 
 - `frontend/`: Contains all frontend-related code and configuration.
-  - `app/`: Next.js 14 app directory.
-    - `api/`: API routes for Next.js.
+  - `src/`: Source directory for Next.js 18 application.
+    - `app/`: Next.js 18 app directory (using App Router).
+      - `api/`: API routes for Next.js.
+      - `(auth)/`: Grouped authentication routes.
+        - `login/`: Login page and its layout.
+        - `register/`: Registration page and its layout.
+        - `layout.tsx`: Shared layout for auth pages.
+      - `dashboard/`: Dashboard page and its layout.
+      - `jobs/`: Job-related pages and layouts.
+        - `[id]/`: Dynamic route for individual job pages.
+      - `layout.tsx`: Root layout component for the app.
+      - `page.tsx`: Root page component.
     - `components/`: Reusable React components.
     - `hooks/`: Custom React hooks.
     - `lib/`: Utility functions and libraries.
-    - `pages/`: Page components and routing.
     - `styles/`: Global styles and Tailwind CSS configuration.
     - `types/`: TypeScript type definitions.
     - `utils/`: Utility functions specific to the frontend.
@@ -83,12 +136,12 @@
   - `tests/`: Frontend tests (unit and integration).
   - `.env`: Environment variables for the frontend.
   - `.eslintrc.js`: ESLint configuration.
-  - `next.config.js`: Next.js configuration file.
+  - `next.config.mjs`: Next.js configuration file (using ES modules).
   - `package.json`: Frontend dependencies and scripts.
-  - `tailwind.config.js`: Tailwind CSS configuration.
+  - `tailwind.config.ts`: Tailwind CSS configuration (in TypeScript).
   - `tsconfig.json`: TypeScript configuration.
 
-### Backend
+### Backend (Python 3.11)
 
 - `backend/`: Contains all backend-related code and configuration.
   - `app/`: Main application directory.
@@ -104,7 +157,7 @@
     - `main.py`: FastAPI application entry point.
   - `tests/`: Backend tests.
   - `.env`: Environment variables for the backend.
-  - `pyproject.toml`: Poetry configuration and dependencies.
+  - `pyproject.toml`: Poetry configuration and dependencies (specifying Python 3.11).
   - `requirements.txt`: Python dependencies for non-Poetry environments.
 
 ### Supabase
@@ -160,11 +213,10 @@ The root `package.json` file includes scripts for running concurrent processes:
     "test:backend": "cd backend && poetry run pytest"
   },
   "devDependencies": {
-    "concurrently": "^6.2.1"
+    "concurrently": "^8.0.1"
   }
 }
 ```
-
 ## scripts/dev.sh
 
 The `scripts/dev.sh` file uses concurrently to start both frontend and backend:
@@ -178,19 +230,19 @@ npm run dev
 
 ## Rationale for Structure
 
-1. **Separation of Concerns**: Clear division between frontend, backend, and Supabase configurations.
-2. **Next.js App Router**: Follows Next.js 14 conventions with the App Router.
-3. **FastAPI Best Practices**: Adheres to FastAPI best practices while accommodating Supabase integration.
-4. **Supabase Integration**: Dedicated directory for Supabase configurations and migrations, separate from application code.
-5. **Scalability**: Structure allows for easy addition of new features and components.
-6. **Testing**: Dedicated test directories for comprehensive coverage.
-7. **Documentation**: Centralized documentation for easy access and maintenance.
-8. **CI/CD Integration**: Facilitates easy setup of CI/CD pipelines.
-9. **Environment Management**: Separate `.env` files for frontend and backend.
-10. **Dependency Management**: Uses Poetry for backend and npm for frontend.
-11. **Concurrent Development**: Utilizes concurrently for simultaneous frontend and backend development.
-12. **Unified Scripts**: Root-level package.json provides a central point for common tasks.
-13. **Backend Optimization**: Revised backend structure removes redundant elements typically handled by Supabase.
-14. **Service-Oriented Backend**: Includes a services directory for business logic, promoting clean separation from API handlers.
+- Next.js 18 App Router: Follows Next.js 18 conventions with the App Router and src directory.
+- Nested Layouts: Includes layout.tsx files at various levels for flexible page layouts.
+- Route Groups: Uses route groups (e.g., (auth)) to organize related pages.
+- Dynamic Routes: Includes examples of dynamic routes (e.g., jobs/[id]).
+- Python 3.11: Backend structure optimized for Python 3.11 and FastAPI.
+- Supabase Integration: Dedicated directory for Supabase configurations and migrations.
+- Scalability: Structure allows for easy addition of new features and components.
+- Testing: Dedicated test directories for comprehensive coverage.
+- Documentation: Centralized documentation for easy access and maintenance.
+- CI/CD Integration: Facilitates easy setup of CI/CD pipelines.
+- Environment Management: Separate .env files for frontend and backend.
+- Dependency Management: Uses Poetry for backend and npm for frontend.
+- Concurrent Development: Utilizes concurrently for simultaneous frontend and backend development.
+- Unified Scripts: Root-level package.json provides a central point for common tasks.
 
 This structure provides a solid foundation for the Job Search Automation project, accommodating all required technologies, allowing for efficient Supabase integration, and supporting future growth and maintainability.

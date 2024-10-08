@@ -1,10 +1,26 @@
+# AI Instructions
+- This is a continuous learning log. Never delete previous entries.
+- Always append new information to the existing log.
+- Start each new entry with the current date and time.
+- Update the "Current Task" section for each new task you begin.
+- When a task is completed:
+  1. Move its details to the top of the "Task History" section.
+  2. Update the "Last Completed Task" section.
+  3. Suggest a git commit message.
+- Before each new entry, review the log to build upon previous learnings.
+- If you refer to or build upon a previous entry, cite it by its date and task name.
+- Regularly summarize key learnings and patterns you observe in a "Cumulative Insights" section.
+
 # AI Project Log
 
-## AI Instructions 
-- Fill out this log with the following: Current Task, Steps Taken, Implementation, Code Changes, Challenges, and Learnings. 
-- Update this log as you work.
+## Cumulative Insights
+[AI: Periodically add a summary of key learnings, patterns, and insights gathered from the entire log]
 
+## Current Task
+[Keep the existing structure]
 
-## Project Overview
-[Project description, goals, and current status]
-This project is a comprehensive job search application that combines AI analysis, web scraping, and a user-friendly interface to streamline the job hunting process. It leverages modern technologies and artificial intelligence to provide users with personalized job recommendations and insights.
+## Last Completed Task
+[Keep the existing structure]
+
+## Task History
+[Keep the existing structure, but always add new completed tasks at the top]

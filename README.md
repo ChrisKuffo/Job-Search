@@ -23,7 +23,7 @@ This project is a comprehensive job search application that combines AI analysis
 
 - **Resume Analysis**: AI-powered analysis of uploaded resumes with feedback and suggestions.
 - **Job Search Query Generation**: AI-generated optimized job search queries based on resume analysis.
-- **Multi-Platform Job Scraping**: Automated scraping of job postings from various platforms including LinkedIn.
+- **Multi-Platform Job Scraping**: Utilizes Crawl4AI to efficiently scrape job listings from LinkedIn, Indeed, Glassdoor, ZipRecruiter, and CareerBuilder.
 - **Enhanced Job Matching**: Advanced algorithms for analyzing job descriptions against user resumes with detailed match scores.
 - **User-Friendly Interface**: Modern, responsive design for easy interaction across devices.
 - **Real-time Data Streaming**: Live streaming of job listing data to the frontend for immediate user access.
@@ -38,7 +38,7 @@ This project is a comprehensive job search application that combines AI analysis
 
 ### Frontend
 
-- Next.js 14
+- Next.js 18
 - TypeScript
 - React Query
 - Tailwind CSS
@@ -49,7 +49,7 @@ This project is a comprehensive job search application that combines AI analysis
 
 ### Backend
 
-- Python 3.9+
+- Python 3.11
 - FastAPI
 - Supabase
 - BeautifulSoup4
