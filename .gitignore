@@ -21,6 +21,9 @@ yarn-error.log
 # Next.js
 .next/
 out/
+.vercel
+*.tsbuildinfo
+next-env.d.ts
 
 # IDEs and editors
 .vscode/
@@ -49,3 +52,7 @@ htmlcov/
 .coverage.*
 coverage.xml
 *.cover
+
+# Local Poetry installation
+poetry/
+backend/poetry/

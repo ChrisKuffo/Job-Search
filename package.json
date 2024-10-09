@@ -1,0 +1,18 @@
+{
+  "name": "job-search",
+  "version": "1.0.0",
+  "description": "An AI-powered job search application that leverages web scraping to assist users in finding suitable job opportunities.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
+}
